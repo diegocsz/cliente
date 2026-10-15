@@ -1,0 +1,42 @@
+<div class="contenedor">
+  <h2>Registrar Papeleta</h2>
+
+  <h3>
+    Placa:
+    <input
+      type="text"
+      maxlength="6"
+      [(ngModel)]="placa"
+    />
+  </h3>
+
+  <h3>
+    Código de infracción:
+    <input
+      type="text"
+      maxlength="3"
+      [(ngModel)]="codinf"
+    />
+  </h3>
+
+  <h3>
+    Código de policía:
+    <input
+      type="text"
+      maxlength="4"
+      [(ngModel)]="poli"
+    />
+  </h3>
+
+  <button (click)="registrar()" [disabled]="cargando()">
+    {{ cargando() ? 'Registrando...' : 'Registrar' }}
+  </button>
+
+  @if (mensaje()) {
+    <p>{{ mensaje() }}</p>
+  }
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+</div>

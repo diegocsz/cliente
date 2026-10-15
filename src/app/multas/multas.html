@@ -1,0 +1,48 @@
+<div class="contenedor">
+  <h2>Multas x Año</h2>
+
+  <h3>
+    Ingrese año:
+    <input
+      type="text"
+      maxlength="4"
+      [(ngModel)]="anio"
+      (keyup.enter)="buscar()"
+    />
+  </h3>
+
+  <button (click)="buscar()" [disabled]="cargando()">Buscar</button>
+
+  @if (cargando()) {
+    <p>Consultando...</p>
+  }
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  @if (datos(); as d) {
+    <h3>Año: {{ d.anio }}</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Placa</th>
+          <th>Propietario</th>
+          <th>Cantidad de papeletas</th>
+          <th>Monto total</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (v of d.vehiculos; track v.placa) {
+          <tr>
+            <td>{{ v.placa }}</td>
+            <td>{{ v.propietario }}</td>
+            <td>{{ v.cantidad_papeletas }}</td>
+            <td>{{ v.monto }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</div>

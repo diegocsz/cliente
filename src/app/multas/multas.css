@@ -1,0 +1,41 @@
+.contenedor {
+  display: inline-block;
+  min-width: 260px;
+  padding: 8px 16px 24px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+h2 {
+  font-size: 24px;
+  margin: 16px 0;
+}
+
+h3 {
+  font-size: 18px;
+  margin: 18px 0;
+}
+
+input {
+  font-size: 13px;
+}
+
+button {
+  margin-bottom: 8px;
+}
+
+table {
+  border: 1px solid #000;
+  border-spacing: 2px;
+}
+
+th,
+td {
+  border: 1px solid #808080;
+  padding: 1px 2px;
+  text-align: left;
+  font-size: 16px;
+}
+
+.error {
+  color: red;
+}

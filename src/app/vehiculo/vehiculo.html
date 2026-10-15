@@ -1,0 +1,51 @@
+<div class="contenedor">
+  <h2>Papeletas x Vehículo</h2>
+
+  <h3>
+    Ingrese placa:
+    <input
+      type="text"
+      maxlength="6"
+      [(ngModel)]="placa"
+      (keyup.enter)="buscar()"
+    />
+  </h3>
+
+  <button (click)="buscar()" [disabled]="cargando()">Buscar</button>
+
+  @if (cargando()) {
+    <p>Buscando...</p>
+  }
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  @if (datos(); as d) {
+    <h3>Propietario: {{ d.vehiculo.propietario }}</h3>
+    <h3>Modelo: {{ d.vehiculo.modelo }}</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nro. papeleta</th>
+          <th>Infracción</th>
+          <th>Fecha</th>
+          <th>Multa</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (p of d.papeletas; track p.numero) {
+          <tr>
+            <td>{{ p.numero }}</td>
+            <td>{{ p.infraccion }}</td>
+            <td>{{ p.fecha | date: 'yyyy-MM-dd' }}</td>
+            <td>{{ p.multa }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+    <h3>Total de multas: {{ d.total_multas | currency: 'PEN' }}</h3>
+  }
+</div>
